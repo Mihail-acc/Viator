@@ -41,11 +41,28 @@ driver.find_element(By.XPATH, "//input[@data-parsley-minlength='3']").send_keys(
 
 # Insert Credit Card Number
 #driver.find_element(By.XPATH, "(//input[@id='paymentInfoFullName']").send_keys("56764756475647564")
-
+#Select ExpiryMonth
 #driver.find_element(By.XPATH, "//select[contains(@id,'expiryDateMonth')]").send_keys("10")
+#Select ExpiryYear
 #driver.find_element(By.XPATH, "//select[contains(@id,'expiryDateYear')]").send_keys("2023")
+#Insert Cvv Code
 #driver.find_element(By.XPATH, "//input[contains(@id,'securityCode')]").send_keys("000")
 
+#Insert Email address
+#driver.find_element(By.XPATH, "(//input[@type='email']").send_keys("email@gmail.com")
 # Insert Phone number
 driver.find_element(By.XPATH, "(//input[contains(@type,'tel')])[1]").send_keys("677857465")
 
+# Click Book Now
+#driver.find_element(By.XPATH, "(//button[contains(@id,'bookNow')]").click()
+
+
+#Check that payment is not processing
+try:
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//h1[contains(text(),'Secure Checkout')]")))
+    not_found = False
+except:
+    not_found = True
+
+assert not_found
+# In this case we'll get AssertionError if element appeared in DOM within 10 seconds
