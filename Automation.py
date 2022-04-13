@@ -12,18 +12,22 @@ from selenium.webdriver.common.by import By
 
 driver = webdriver.Chrome()
 
+#Open The link
 driver.get("https://www.viator.com/tours/Paris/Seine-River-Cruise-Bateaux-Parisiens-Sightseeing-Cruise-with-Dinner-and-Live-Music/d479-5836DINNERCRUISE")
 driver.maximize_window()
 
+#Click on Check Availability
 driver.find_element(By.XPATH, "//button[@id='_evidon-accept-button']").click()
 driver.find_element(By.XPATH, "//span[contains(.,'Check Availability')]").click()
 driver.find_element(By.XPATH, "//div[@class='priceDate__1tt3'][contains(.,'20')]").click()
 driver.find_element(By.XPATH, "//button[contains(.,'Apply')]").click()
+
+#Wait to open the otpions
 driver.implicitly_wait(20)
 driver.find_element(By.XPATH, "//button[@data-automation='tour-grade-buy-now-button']").click()
 driver.implicitly_wait(10)
 
-
+#Complete the fields for payment
 element2 = driver.find_element(By.XPATH, "(//input[contains(@data-parsley-pattern,'')])[8]").send_keys("Mihail")
 
 element3 = driver.find_element(By.XPATH, "(//input[contains(@data-parsley-pattern,'')])[9]").send_keys("Suruceanu")
